@@ -1,0 +1,41 @@
+﻿<Window x:Class="WPF.Input.WPFRoutedCommands"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.Input"
+        mc:Ignorable="d"
+        Title="WPFRoutedCommands" Height="300" Width="300">
+        <!-- 아래 코드는 코드비하인드의 Fucus()와 동일한 역할을 한다. (방안2) 총 3가지의 방법이 있다.
+        FocusManager.FocusedElement="{Binding RelativeSource={x:Static RelativeSource.Self}, Mode=OneTime}"-->
+    
+    <Grid>
+        <StackPanel x:Name="stack" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <StackPanel.ContextMenu>
+                <!--<ContextMenu>
+                    <MenuItem Header="New" Command="New" />
+                    <MenuItem Header="Open" Command="Open" />
+                    <MenuItem Header="Save" Command="Save" />
+                </ContextMenu>-->
+                <!-- ContextMenu가 다른 윈도우라서 바인딩이 안되기 때문에 커맨드 Target을 부보 ContextMenu로 수동 지정한다. (방안3)-->
+                <ContextMenu>
+                    <MenuItem Header="New" Command="New" 
+                              CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                    <MenuItem Header="Open" Command="Open" 
+                              CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                    <MenuItem Header="Save" Command="Save" 
+                              CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                </ContextMenu>
+            </StackPanel.ContextMenu>
+
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="New" Command="New" />
+                    <MenuItem Header="Open" Command="Open" />
+                    <MenuItem Header="Save" Command="Save" />
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        
+    </Grid>
+</Window>

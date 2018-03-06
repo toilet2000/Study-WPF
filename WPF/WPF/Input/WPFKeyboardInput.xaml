@@ -1,0 +1,15 @@
+﻿<Window x:Class="WPF.Input.WPFKeyboardInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.Input"
+        mc:Ignorable="d"
+        Title="WPFKeyboardInput" Height="300" Width="300">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBox KeyDown="OnTextInputKeyDown" Width="200" Height="30" Margin="10" />
+            <Button Click="OnTextInputButtonClick" Content="Open" Margin="10" Width="50" Height="30" />
+        </StackPanel>
+    </Grid>
+</Window>
